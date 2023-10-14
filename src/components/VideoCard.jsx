@@ -38,6 +38,13 @@ const VideoCard = ({ video }) => {
 		playlistDispatch(actionResult);
 		console.log("id", id);
 	}
+	let isFound = 0;
+
+	if (playlistState.items) {
+		playlistState.items.some((item) => {
+			if (item.id === video.id.videoId || item.id === video.id) isFound = 1;
+		});
+	}
 	return (
 		<Card
 			sx={{
@@ -45,7 +52,10 @@ const VideoCard = ({ video }) => {
 				boxShadow: "none",
 				borderRadius: 0,
 			}}>
-			<Link to={video.id.videoId ? `/video/${video.id.videoId}` : demoVideoUrl}>
+			<Link
+				to={
+					video.id.videoId ? `/video/${video.id.videoId}` : `/video/${video.id}`
+				}>
 				<CardMedia
 					image={video?.snippet?.thumbnails?.high?.url || video?.image}
 					alt={video?.snippet?.title || video?.title}
@@ -53,11 +63,22 @@ const VideoCard = ({ video }) => {
 				/>
 			</Link>
 
-			<CardContent sx={{ backgroundColor: "#1e1e1e", height: "106px" }}>
+			<CardContent
+				sx={{
+					backgroundColor: "#1e1e1e",
+					height: "106px",
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "space-between",
+				}}>
 				<Link
-					to={video.id.videoId ? `/video/${video.id.videoId}` : demoVideoUrl}>
+					to={
+						video.id.videoId
+							? `/video/${video.id.videoId}`
+							: `/video/${video.id}`
+					}>
 					<Typography variant="subtitle1" fontWeight="bold" color="#fff">
-						{video.snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+						{video.snippet?.title.slice(0, 60) || video.title.slice(0, 60)}
 					</Typography>
 				</Link>
 				<Box display="flex" justifyContent="space-between" alignItems="center">
@@ -65,19 +86,20 @@ const VideoCard = ({ video }) => {
 						to={
 							video?.snippet?.channelId
 								? `/channel/${video?.snippet?.channelId}`
-								: demoChannelUrl
+								: `/channel/${video?.channelId}`
 						}>
 						<Typography variant="subtitle2" fontWeight="bold" color="gray">
-							{video?.snippet?.channelTitle || demoChannelTitle}
+							{video?.snippet?.channelTitle || video?.channelTitle}
 							<CheckCircle sx={{ fontSize: 12, color: "gray", ml: "5px" }} />
 						</Typography>
 					</Link>
 					{}
 
-					{playlistState.items.some(
-						(item) => item.id.videoId === video.id.videoId
-					) ? (
-						<Button onClick={() => handleRemoveFromPlaylist(video.id)}>
+					{isFound === 1 ? (
+						<Button
+							onClick={() =>
+								handleRemoveFromPlaylist(video?.id?.videoId || video?.id)
+							}>
 							<Delete sx={{ fontSize: 40, color: "white" }} />
 						</Button>
 					) : (
@@ -87,6 +109,7 @@ const VideoCard = ({ video }) => {
 									id: video.id.videoId,
 									title: video.snippet.title,
 									channelId: video.snippet.channelId,
+									channelTitle: video.snippet.channelTitle,
 									image: video.snippet.thumbnails.high.url,
 								})
 							}>

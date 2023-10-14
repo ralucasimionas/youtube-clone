@@ -2,9 +2,9 @@ export const initialState = {
 	items: [],
 };
 
-export function playlistReducer(state, action) {
+export function subscribedReducer(state, action) {
 	switch (action.type) {
-		case "ADD_TO_PLAYLIST": {
+		case "ADD_TO_SUBSCRIBED": {
 			const previousItems = state.items;
 			const newItem = action.payload;
 
@@ -24,7 +24,7 @@ export function playlistReducer(state, action) {
 			}
 		}
 
-		case "REMOVE_FROM_PLAYLIST": {
+		case "REMOVE_FROM_SUBSCRIBED": {
 			const filteredItems = state.items.filter((item) => {
 				return item.id !== action.payload;
 			});
