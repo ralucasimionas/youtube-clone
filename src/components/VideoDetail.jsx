@@ -23,8 +23,7 @@ const VideoDetail = () => {
 			(data) => setVideos(data.items)
 		);
 	}, [id]);
-	// console.log("videoDetail", videoDetail);
-	// console.log("snippet", videoDetail.id)t
+
 	if (!videoDetail?.snippet) return <Loader />;
 
 	const {

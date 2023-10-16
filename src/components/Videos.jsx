@@ -16,9 +16,6 @@ const Videos = ({ videos, direction }) => {
 						{(item?.id?.videoId || item?.id) && (
 							<VideoCard video={item} key={item?.id?.videoId} />
 						)}
-						{/* {item.snippet.channelId && (
-						<ChannelCard channelDetail={item.snippet} />
-					)} */}
 					</Box>
 				</Box>
 			))}

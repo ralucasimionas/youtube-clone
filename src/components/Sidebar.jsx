@@ -4,6 +4,7 @@ import { categories, channels, channel } from "../utils/constants";
 
 import { List, ListIcon } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+
 const Sidebar = ({
 	selectedCategory,
 	setSelectedCategory,
@@ -66,9 +67,32 @@ const Sidebar = ({
 				</span>
 			</Link>
 		</button>
-		{/* <Link to="/" style={{ display: "flex", alignItems: "center" }}>
-			<img src={logo} alt="logo" height={45} />
-		</Link> */}
+
+		<button
+			className="category-btn"
+			style={{
+				color: "white",
+			}}
+			key={"mychannels"}>
+			<Link to="/mychannels" style={{ display: "flex", alignItems: "center" }}>
+				<span
+					style={{
+						color: "red",
+						marginRight: "15px",
+					}}>
+					<List />
+				</span>
+
+				<span
+					style={{
+						color: "white",
+						opacity: "0.6",
+						marginRight: "15px",
+					}}>
+					My Channels
+				</span>
+			</Link>
+		</button>
 	</Stack>
 );
 

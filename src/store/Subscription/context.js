@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const SubsribedChannelsContext = createContext();
+export const SubscribedChannelsContext = createContext();

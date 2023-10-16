@@ -9,17 +9,14 @@ export function playlistReducer(state, action) {
 			const newItem = action.payload;
 
 			const foundItem = previousItems.find((item) => {
-				// console.log("din reducer", item?.id, "idnou", newItem?.id);
 				return item.id === newItem.id;
 			});
-			// console.log("din reducer", item.id, newItem.id);
 
 			if (!foundItem) {
 				const newState = { items: [...previousItems, newItem] };
-				// console.log("items din reducer", newState.items);
+
 				return newState;
 			} else {
-				// console.log("items din reducer else");
 				return state;
 			}
 		}

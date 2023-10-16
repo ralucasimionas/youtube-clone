@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { removeFromPlaylist } from "../store/Playlist/actions";
+
 import { PlaylistContext } from "../store/Playlist/context";
 import { Box, Typography } from "@mui/material";
 
@@ -7,12 +7,6 @@ import Videos from "./Videos";
 
 const MyPlaylist = () => {
 	const { playlistState, playlistDispatch } = useContext(PlaylistContext);
-
-	// function removeFromPlaylist(id) {
-	// 	const actionResult = removeFromPlaylist(id);
-	// 	playlistDispatch(actionResult);
-	// }
-	console.log("playlistitems", playlistState.items);
 
 	return (
 		<Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>

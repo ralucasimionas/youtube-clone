@@ -9,7 +9,6 @@ const ChannelDetail = () => {
 	const [channelDetail, setChannelDetail] = useState(null);
 	const [videos, setVideos] = useState([]);
 	const { id } = useParams();
-	console.log("id", id);
 
 	useEffect(() => {
 		fetchFromAPI(`channels?part=snippet&part=statistics&id=${id}`).then(
@@ -24,17 +23,13 @@ const ChannelDetail = () => {
 		);
 	}, [id]);
 
-	console.log("Channel", channelDetail);
-	console.log("Videos channel", videos);
-
 	return (
 		<Box minHeight="95vh">
-			<Box>
+			<Box marginBottom="20px" backgroundColor="#1e1e1e">
 				<ChannelCard channelDetail={channelDetail} />
 			</Box>
 
 			<Box display="flex" p="2">
-				{/* <Box sx={{ mr: { sm: "100px" } }} /> */}
 				<Videos videos={videos} />
 			</Box>
 		</Box>
