@@ -2,7 +2,7 @@
 
 ## DEMO
 
-The app is deployed at [youtubeclonebyralucas.netlify.app]. (https:/youtubeclonebyralucas.netlify.app/).
+The app is deployed at [youtubeclonebyralucas.netlify.app]. (https://youtubeclonebyralucas.netlify.app/).
 
 ## Local Usage
 
